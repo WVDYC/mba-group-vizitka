@@ -1,0 +1,10 @@
+[
+ {"id":"zoomlion","name":"Автокран Zoomlion","category":"crane","label":"Автокран / 25 тонн","description":"Подъём и перемещение грузов на строительных объектах. Грузоподъёмность 25 тонн.","price":3800000,"period":"month","image":"assets/crane.jpg"},
+ {"id":"loader2","name":"Погрузчик 2 м³","category":"loader","label":"Погрузчик / 2 м³","description":"Фронтальный погрузчик для перемещения и погрузки сыпучих материалов.","price":2500000,"period":"month","image":"assets/loader2.jpg"},
+ {"id":"loader3","name":"Погрузчик 3 м³","category":"loader","label":"Погрузчик / 3 м³","description":"Фронтальный погрузчик с ковшом 3 м³ для работ с большим объёмом материалов.","price":2800000,"period":"month","image":"assets/loader3.jpg"},
+ {"id":"cat330","name":"Экскаватор CAT 330","category":"excavator","label":"Гусеничный экскаватор","description":"Разработка грунта, котлованы и масштабные земляные работы.","price":null,"period":"month","image":"assets/excavator.jpg"},
+ {"id":"isuzu","name":"Автовышка Isuzu Elf","category":"lift","label":"Автовышка / 14 метров","description":"Работы на высоте до 14 метров: монтаж, фасады и обслуживание.","price":2300000,"period":"month","image":"assets/lift.jpg"},
+ {"id":"mitsubishi","name":"Автовышка Mitsubishi Canter","category":"lift","label":"Автовышка / 14 метров","description":"Высота подъёма 14 метров для монтажных и электротехнических работ.","price":2500000,"period":"month","image":"assets/mitsubishi.jpg"},
+ {"id":"spider","name":"Мини-кран «Паук»","category":"crane","label":"Мини-кран / по запросу","description":"Компактный кран. Модель, грузоподъёмность и условия аренды уточняйте у менеджера.","price":null,"period":"month","image":"assets/spider.jpg"},
+ {"id":"compressor","name":"Компрессор · 2 отбойника","category":"compressor","label":"Компрессор / посуточно","description":"Компрессор с двумя отбойными молотками для дорожных и демонтажных работ.","price":70000,"period":"day","image":"assets/compressor.jpg"}
+]
