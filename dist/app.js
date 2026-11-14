@@ -12,7 +12,13 @@ function renderPhoto(item) {
 function renderSpecs(item) {
  if(!item.specs?.length)return '';
  const list=rows=>rows.map(([name,value])=>`<div><dt>${escapeHTML(name)}</dt><dd>${escapeHTML(value)}</dd></div>`).join('');
- return `<div class="machine-highlights">${(item.highlights||[]).map(text=>`<span>${escapeHTML(text)}</span>`).join('')}</div><details class="machine-details"><summary>Подробнее о технике <span aria-hidden="true">+</span></summary><h4>Об этой машине</h4><dl>${list(item.specs)}</dl><h4>Каталожные параметры серии</h4><dl>${list(item.seriesSpecs||[])}</dl><p class="specs-note">${escapeHTML(item.specsNote||'')}</p><a class="specs-source" href="${escapeHTML(item.sourceUrl)}" target="_blank" rel="noopener">Параметры на сайте производителя</a></details>`;
+ const highlights=(item.highlights||[]).map(text=>`<span>${escapeHTML(text)}</span>`).join('');
+ const series=item.seriesSpecs?.length?`<h4>Каталожные параметры серии</h4><dl>${list(item.seriesSpecs)}</dl>`:'';
+ const applications=item.applications?.length?`<h4>Для каких работ</h4><ul class="equipment-tasks">${item.applications.map(text=>`<li>${escapeHTML(text)}</li>`).join('')}</ul>`:'';
+ const request=item.requestHint?`<h4>Что сообщить при заказе</h4><p class="specs-note">${escapeHTML(item.requestHint)}</p>`:'';
+ const note=item.specsNote?`<p class="specs-note">${escapeHTML(item.specsNote)}</p>`:'';
+ const source=item.sourceUrl?`<a class="specs-source" href="${escapeHTML(item.sourceUrl)}" target="_blank" rel="noopener">${escapeHTML(item.sourceLabel||'Параметры на сайте производителя')}</a>`:'';
+ return `<div class="machine-highlights">${highlights}</div><details class="machine-details"><summary>Подробнее о технике <span aria-hidden="true">+</span></summary><h4>Характеристики</h4><dl>${list(item.specs)}</dl>${series}${applications}${request}${note}${source}</details>`;
 }
 
 function renderCards() {
