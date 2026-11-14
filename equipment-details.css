@@ -1,0 +1,19 @@
+.card-photo-link{display:block;width:100%;height:100%;position:relative;color:#f1f1e9}
+.card-photo-link img{object-position:50% 35%}
+.photo-origin{position:absolute;bottom:12px;left:15px;right:15px;font-size:10px;background:#171916c9;padding:8px 10px;line-height:1.5;backdrop-filter:blur(8px)}
+.machine-highlights{display:flex;gap:7px;flex-wrap:wrap;margin:19px 0}
+.machine-highlights>span{font-size:10px;color:var(--yellow);border:1px solid #59633f;padding:6px 9px;line-height:1.5}
+.machine-details{border-top:1px solid var(--line);margin-top:18px}
+.machine-details summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:15px;padding:18px 0;font-size:12px;font-weight:600;cursor:pointer}
+.machine-details summary::-webkit-details-marker{display:none}
+.machine-details summary>span{font-size:22px;color:var(--yellow);font-weight:400}
+.machine-details[open] summary>span{transform:rotate(45deg)}
+.machine-details h4{font-size:11px;color:var(--ink);font-weight:600;margin:12px 0}
+.machine-details dl{margin:0 0 23px}
+.machine-details dl>div{display:grid;grid-template-columns:1fr 1.1fr;gap:14px;border-bottom:1px solid var(--line);padding:11px 0;font-size:11px;line-height:1.65}
+.machine-details dt{color:var(--muted)}
+.machine-details dd{margin:0;text-align:right;overflow-wrap:anywhere}
+.card .machine-details .specs-note{font-size:11px;min-height:0;line-height:1.85;color:var(--muted)}
+.specs-source{display:inline-block;font-size:11px;color:var(--yellow);text-decoration:underline;text-underline-offset:4px;margin:15px 0 4px;line-height:1.8}
+.machine-details summary:focus-visible,.card-photo-link:focus-visible{outline:2px solid var(--yellow);outline-offset:4px}
+@media(max-width:700px){.machine-details summary{font-size:14px;padding:20px 0}.machine-highlights>span{font-size:11px}.machine-details h4{font-size:13px}.machine-details dl>div{font-size:12px}.card .machine-details .specs-note,.specs-source{font-size:12px}.photo-origin{font-size:11px}}
