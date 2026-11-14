@@ -1,10 +1,139 @@
 [
- {"id":"zoomlion","name":"Автокран Zoomlion","category":"crane","label":"Автокран / 25 тонн","description":"Подъём и перемещение грузов на строительных объектах. Грузоподъёмность 25 тонн.","price":3800000,"period":"month","image":"assets/crane.jpg"},
- {"id":"loader2","name":"Погрузчик 2 м³","category":"loader","label":"Погрузчик / 2 м³","description":"Фронтальный погрузчик для перемещения и погрузки сыпучих материалов.","price":2500000,"period":"month","image":"assets/loader2.jpg"},
- {"id":"loader3","name":"Погрузчик 3 м³","category":"loader","label":"Погрузчик / 3 м³","description":"Фронтальный погрузчик с ковшом 3 м³ для работ с большим объёмом материалов.","price":2800000,"period":"month","image":"assets/loader3.jpg"},
- {"id":"cat330","name":"Экскаватор CAT 330","category":"excavator","label":"Гусеничный экскаватор","description":"Разработка грунта, котлованы и масштабные земляные работы.","price":null,"period":"month","image":"assets/excavator.jpg"},
- {"id":"isuzu","name":"Автовышка Isuzu Elf","category":"lift","label":"Автовышка / 14 метров","description":"Работы на высоте до 14 метров: монтаж, фасады и обслуживание.","price":2300000,"period":"month","image":"assets/lift.jpg"},
- {"id":"mitsubishi","name":"Автовышка Mitsubishi Canter","category":"lift","label":"Автовышка / 14 метров","description":"Высота подъёма 14 метров для монтажных и электротехнических работ.","price":2500000,"period":"month","image":"assets/mitsubishi.jpg"},
- {"id":"spider","name":"Мини-кран «Паук»","category":"crane","label":"Мини-кран / по запросу","description":"Компактный кран. Модель, грузоподъёмность и условия аренды уточняйте у менеджера.","price":null,"period":"month","image":"assets/spider.jpg"},
- {"id":"compressor","name":"Компрессор · 2 отбойника","category":"compressor","label":"Компрессор / посуточно","description":"Компрессор с двумя отбойными молотками для дорожных и демонтажных работ.","price":70000,"period":"day","image":"assets/compressor.jpg"}
+  {
+    "id": "zoomlion",
+    "name": "Автокран Zoomlion",
+    "category": "crane",
+    "label": "Автокран / 25 тонн",
+    "description": "Подъём и перемещение грузов на строительных объектах. Грузоподъёмность 25 тонн.",
+    "price": 3800000,
+    "period": "month",
+    "image": "assets/crane.jpg"
+  },
+  {
+    "id": "loader2",
+    "name": "Погрузчик 2 м³",
+    "category": "loader",
+    "label": "Погрузчик / 2 м³",
+    "description": "Фронтальный погрузчик для перемещения и погрузки сыпучих материалов.",
+    "price": 2500000,
+    "period": "month",
+    "image": "assets/loader2.jpg"
+  },
+  {
+    "id": "loader3",
+    "name": "Погрузчик 3 м³",
+    "category": "loader",
+    "label": "Погрузчик / 3 м³",
+    "description": "Фронтальный погрузчик с ковшом 3 м³ для работ с большим объёмом материалов.",
+    "price": 2800000,
+    "period": "month",
+    "image": "assets/loader3.jpg"
+  },
+  {
+    "id": "cat330",
+    "name": "Экскаватор CAT 330",
+    "category": "excavator",
+    "label": "Гусеничный экскаватор",
+    "description": "Разработка грунта, котлованы и масштабные земляные работы.",
+    "price": null,
+    "period": "month",
+    "image": "assets/excavator.jpg"
+  },
+  {
+    "id": "isuzu",
+    "name": "Автовышка Isuzu Elf",
+    "category": "lift",
+    "label": "Автовышка / 14 метров",
+    "description": "Работы на высоте до 14 метров: монтаж, фасады и обслуживание.",
+    "price": 2300000,
+    "period": "month",
+    "image": "assets/lift.jpg"
+  },
+  {
+    "id": "mitsubishi",
+    "name": "Автовышка Mitsubishi Canter",
+    "category": "lift",
+    "label": "Автовышка / 14 метров",
+    "description": "Высота подъёма 14 метров для монтажных и электротехнических работ.",
+    "price": 2500000,
+    "period": "month",
+    "image": "assets/mitsubishi.jpg"
+  },
+  {
+    "id": "spider",
+    "name": "Мини-кран CS-4000 с люлькой",
+    "category": "crane",
+    "label": "Кран + люлька / CS-4000",
+    "description": "Жёлтый гусеничный кран-паук Changsheng CS-4000 с телескопической стрелой и люлькой в комплекте. Для подъёма грузов, монтажных и высотных работ на ограниченных площадках. Подходит для задач, где крупной технике трудно разместиться.",
+    "price": null,
+    "period": "month",
+    "image": "assets/spider-cs4000.jpg",
+    "imageAlt": "Жёлтый мини-кран Changsheng CS-4000 из парка MBA Group",
+    "realPhoto": true,
+    "highlights": [
+      "CS-4000",
+      "Кран + люлька",
+      "До 4 т — кран"
+    ],
+    "specs": [
+      [
+        "Модель",
+        "CS-4000"
+      ],
+      [
+        "Производитель",
+        "Jining Changsheng Machinery"
+      ],
+      [
+        "Двигатель по документу",
+        "CZ380G"
+      ],
+      [
+        "Выпуск по документу",
+        "Август 2026"
+      ],
+      [
+        "Комплектация владельца",
+        "Кран с люлькой"
+      ],
+      [
+        "Ходовая часть",
+        "Резиновые гусеницы"
+      ]
+    ],
+    "seriesSpecs": [
+      [
+        "Грузоподъёмность крана",
+        "До 4 т"
+      ],
+      [
+        "Высота подъёма",
+        "До 15 м"
+      ],
+      [
+        "Рабочий радиус",
+        "До 13 м"
+      ],
+      [
+        "Поворот",
+        "360°"
+      ],
+      [
+        "Габариты в сложенном виде",
+        "4 250 × 1 000 × 1 830 мм"
+      ]
+    ],
+    "specsNote": "Параметры серии приведены по таблице производителя. В его описании встречаются другие размеры и радиус; характеристики этой машины уточняются по паспорту и грузовой диаграмме. Грузоподъёмность зависит от вылета стрелы. Нагрузка на люльку и высота работы с ней согласуются отдельно.",
+    "sourceUrl": "https://cshicrane.com/products/4-ton-spider-crane"
+  },
+  {
+    "id": "compressor",
+    "name": "Компрессор · 2 отбойника",
+    "category": "compressor",
+    "label": "Компрессор / посуточно",
+    "description": "Компрессор с двумя отбойными молотками для дорожных и демонтажных работ.",
+    "price": 70000,
+    "period": "day",
+    "image": "assets/compressor.jpg"
+  }
 ]
