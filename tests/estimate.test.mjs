@@ -1,10 +1,25 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {calculateEstimate} from '../dist/estimate.mjs';
+import {readFileSync} from 'node:fs';
 const catalog=[{id:'crane',price:3800000,period:'month'},{id:'loader',price:2500000,period:'month'},{id:'compressor',price:70000,period:'day'},{id:'spider',price:null,period:'month'}];
 test('mixed equipment, fleet quantities and independent day/month periods',()=>{
  const result=calculateEstimate(catalog,[{id:'crane',units:1,duration:1},{id:'loader',units:2,duration:2},{id:'compressor',units:1,duration:3}]);
  assert.equal(result.knownTotal,14010000);assert.equal(result.units,4);assert.equal(result.onRequest,0);assert.equal(result.valid,true);
+});
+test('hourly price and monthly quote are calculated independently',()=>{
+ const equipment=[{id:'excavator',period:'hour',price:25000,rates:{hour:25000,month:null}}];
+ assert.equal(calculateEstimate(equipment,[{id:'excavator',period:'hour',units:1,duration:8}]).knownTotal,200000);
+ const monthly=calculateEstimate(equipment,[{id:'excavator',period:'month',units:1,duration:2}]);
+ assert.equal(monthly.knownTotal,0);assert.equal(monthly.onRequest,1);assert.equal(monthly.details[0].total,null);
+ assert.equal(calculateEstimate(equipment,[{id:'excavator',period:'day',units:1,duration:1}]).valid,false);
+});
+test('published compressor tariff includes delivery at 60 000 per day',()=>{
+ const liveCatalog=JSON.parse(readFileSync(new URL('../dist/catalog.json',import.meta.url),'utf8'));
+ const compressor=liveCatalog.find(i=>i.id==='compressor');
+ assert.equal(compressor.price,60000);assert.equal(compressor.deliveryIncluded,true);
+ const estimate=calculateEstimate(liveCatalog,[{id:'compressor',units:1,duration:3}]);
+ assert.equal(estimate.knownTotal,180000);assert.equal(estimate.valid,true);
 });
 test('unknown prices remain explicit and do not suppress the known subtotal',()=>{
  const result=calculateEstimate(catalog,[{id:'spider',units:2,duration:1},{id:'compressor',units:1,duration:3}]);

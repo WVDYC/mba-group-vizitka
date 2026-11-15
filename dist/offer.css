@@ -1,0 +1,12 @@
+.offer-section{display:flex;justify-content:space-between;align-items:center;gap:50px;background:#23271d;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.offer-section h2{font-size:clamp(29px,3vw,43px)}
+.offer-section>div>p:not(.eyebrow){max-width:570px;font-size:14px;line-height:1.85;color:var(--muted);margin:22px 0 15px}
+.offer-download{flex-shrink:0;min-width:250px}
+.company-email{display:block;width:fit-content;font-size:14px;line-height:1.8;color:var(--yellow);text-decoration:underline;text-underline-offset:4px}
+.contact-right .company-email{margin:0 0 22px}
+.rental-period{margin:0 0 20px;font-size:12px;color:var(--muted)}
+.rental-period select{margin-top:9px;font-size:13px;padding:12px;width:100%}
+.estimate-equipment .delivery-included{display:block;color:var(--yellow);margin-top:7px;font-size:11px}
+.card p.rental-price-note{margin:14px 0 0;padding:10px 12px;background:#e6f5570c;color:var(--yellow);font-size:12px;min-height:0;border-left:2px solid var(--yellow);line-height:1.8}
+@media(max-width:850px){.offer-section{display:block}.offer-download{margin-top:26px}.offer-section h2{font-size:34px}}
+@media(max-width:520px){.offer-download{display:flex;width:100%;min-width:0;font-size:13px;padding:17px}.offer-section{padding-top:40px;padding-bottom:40px}.offer-section h2{font-size:30px;letter-spacing:-1.4px}.offer-section .eyebrow{font-size:10px}.rental-period select{font-size:16px}.card p.rental-price-note{font-size:13px}.company-email{font-size:15px}}
