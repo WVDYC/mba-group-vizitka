@@ -1,21 +1,30 @@
+import {initCalculator} from './calculator.js';
 const money = value => new Intl.NumberFormat('ru-RU').format(value) + ' ₸';
 const wa = text => 'https://wa.me/77788275160?text=' + encodeURIComponent(text);
 const escapeHTML = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const select = document.querySelector('#equipment'), quantity = document.querySelector('#quantity');
 let catalog = [], filter = 'all';
+
+function renderPhoto(item) {
+ const alt=item.imageAlt || item.name+' — иллюстративное фото';
+ const image=`<img loading="lazy" src="${escapeHTML(item.image)}" alt="${escapeHTML(alt)}">`;
+ return item.realPhoto?`<a class="card-photo-link" href="${escapeHTML(item.image)}" target="_blank" rel="noopener" aria-label="Открыть фото: ${escapeHTML(item.name)}">${image}<span class="photo-origin">Фото MBA Group · открыть</span></a>`:image;
+}
+function renderSpecs(item) {
+ if(!item.specs?.length)return '';
+ const list=rows=>rows.map(([name,value])=>`<div><dt>${escapeHTML(name)}</dt><dd>${escapeHTML(value)}</dd></div>`).join('');
+ const highlights=(item.highlights||[]).map(text=>`<span>${escapeHTML(text)}</span>`).join('');
+ const series=item.seriesSpecs?.length?`<h4>Каталожные параметры серии</h4><dl>${list(item.seriesSpecs)}</dl>`:'';
+ const applications=item.applications?.length?`<h4>Для каких работ</h4><ul class="equipment-tasks">${item.applications.map(text=>`<li>${escapeHTML(text)}</li>`).join('')}</ul>`:'';
+ const request=item.requestHint?`<h4>Что сообщить при заказе</h4><p class="specs-note">${escapeHTML(item.requestHint)}</p>`:'';
+ const note=item.specsNote?`<p class="specs-note">${escapeHTML(item.specsNote)}</p>`:'';
+ const source=item.sourceUrl?`<a class="specs-source" href="${escapeHTML(item.sourceUrl)}" target="_blank" rel="noopener">${escapeHTML(item.sourceLabel||'Параметры на сайте производителя')}</a>`:'';
+ return `<div class="machine-highlights">${highlights}</div><details class="machine-details"><summary>Подробнее о технике <span aria-hidden="true">+</span></summary><h4>Характеристики</h4><dl>${list(item.specs)}</dl>${series}${applications}${request}${note}${source}</details>`;
+}
+
 function renderCards() {
- document.querySelector('#cards').innerHTML = catalog.filter(item => filter === 'all' || item.category === filter).map((item) => `<article class="card"><div class="card-art"><span class="category">${escapeHTML(item.label)}</span><img loading="lazy" src="${escapeHTML(item.image)}" alt="${escapeHTML(item.name)} — иллюстративное фото"><span class="art-number">${String(catalog.indexOf(item)+1).padStart(2,'0')}</span></div><div class="card-body"><h3>${escapeHTML(item.name)}</h3><p>${escapeHTML(item.description)}</p><div class="card-bottom"><span class="card-price">${item.price == null ? 'По запросу' : money(item.price)}<small>${item.price == null ? 'Уточните условия аренды' : item.period === 'day' ? 'за день' : 'за месяц'}</small></span><a href="${wa('Здравствуйте! Интересует аренда: '+item.name+'. Подскажите наличие и условия.') }" target="_blank" rel="noopener" aria-label="Обсудить аренду: ${escapeHTML(item.name)}">↗</a></div></div></article>`).join('');
+ document.querySelector('#cards').innerHTML = catalog.filter(item => filter === 'all' || item.category === filter).map((item) => `<article class="card"><div class="card-art"><span class="category">${escapeHTML(item.label)}</span>${renderPhoto(item)}<span class="art-number">${String(catalog.indexOf(item)+1).padStart(2,'0')}</span></div><div class="card-body"><h3>${escapeHTML(item.name)}</h3><p>${escapeHTML(item.description)}</p>${item.pricingNote?`<p class="rental-price-note">${escapeHTML(item.pricingNote)}</p>`:''}${renderSpecs(item)}<div class="card-bottom"><span class="card-price">${item.price == null ? 'По запросу' : money(item.price)}<small>${item.price == null ? 'Уточните условия аренды' : item.period === 'hour' ? 'за час' : item.period === 'day' ? 'за день' : 'за месяц'}</small></span><button type="button" class="card-add" data-add-to-estimate="${escapeHTML(item.id)}">В расчёт +</button><a href="${wa('Здравствуйте! Интересует аренда: '+item.name+'. Подскажите наличие и условия.') }" target="_blank" rel="noopener" aria-label="Обсудить аренду: ${escapeHTML(item.name)}"><svg class="icon icon-arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"/></svg></a></div></div></article>`).join('');
  document.querySelectorAll('.card img').forEach(img => img.addEventListener('error', () => { img.src='assets/site-work.jpg'; img.alt='Иллюстрация строительной техники'; }, {once:true}));
 }
-function updateCalc() {
- const item=catalog.find(i=>i.id===select.value); if(!item) return;
- const qty=Number(quantity.value), valid=Number.isInteger(qty)&&qty>=1&&qty<=120;
- document.querySelector('#quantity-label').textContent=item.period==='day'?'Количество дней':'Количество месяцев';
- document.querySelector('#total').textContent=!valid?'Укажите срок от 1 до 120':item.price==null?'По запросу':money(item.price*qty);
-}
 document.querySelectorAll('[data-filter]').forEach(button=>button.addEventListener('click',()=>{filter=button.dataset.filter;document.querySelectorAll('[data-filter]').forEach(b=>{b.classList.toggle('active',b===button);b.setAttribute('aria-pressed',String(b===button));});renderCards();}));
-select.addEventListener('change',updateCalc); quantity.addEventListener('input',updateCalc);
-for(const [id,delta] of [['minus',-1],['plus',1]]) document.querySelector('#'+id).addEventListener('click',()=>{quantity.value=Math.max(1,Math.min(120,(Number(quantity.value)||1)+delta));updateCalc();});
-document.querySelector('#calc-form').addEventListener('submit',event=>{event.preventDefault();if(!quantity.reportValidity())return;const item=catalog.find(i=>i.id===select.value);if(!item)return;const text=`Здравствуйте! Нужна аренда спецтехники:\nТехника: ${item.name}\nСрок: ${quantity.value} ${item.period==='day'?'дн.':'мес.'}\nПредварительная стоимость: ${item.price==null?'по запросу':money(item.price*Number(quantity.value))}\nПодскажите наличие, условия подачи и итоговую стоимость.`;window.open(wa(text),'_blank','noopener');});
 const menu=document.querySelector('.menu');menu.addEventListener('click',()=>{const open=document.querySelector('nav').classList.toggle('open');menu.setAttribute('aria-expanded',String(open));});document.querySelectorAll('nav a').forEach(a=>a.addEventListener('click',()=>{document.querySelector('nav').classList.remove('open');menu.setAttribute('aria-expanded','false');}));
-fetch('catalog.json').then(response=>{if(!response.ok)throw Error('catalog');return response.json();}).then(data=>{catalog=data;renderCards();select.innerHTML=catalog.map(i=>`<option value="${escapeHTML(i.id)}">${escapeHTML(i.name)}${i.id==='zoomlion'?' · 25 т':''}</option>`).join('');updateCalc();}).catch(()=>{document.querySelector('#cards').innerHTML='<p>Каталог временно недоступен. Позвоните <a href="tel:+77788275160">+7 778 827 51 60</a> — поможем подобрать технику.</p>';document.querySelector('#calc-form button[type=submit]').disabled=true;});
+fetch('catalog.json').then(response=>{if(!response.ok)throw Error('catalog');return response.json();}).then(data=>{catalog=data;renderCards();initCalculator(catalog);}).catch(()=>{document.querySelector('#cards').innerHTML='<p>Каталог временно недоступен. Позвоните <a href="tel:+77788275160">+7 778 827 51 60</a> — поможем подобрать технику.</p>';document.querySelector('#add-equipment').disabled=true;});

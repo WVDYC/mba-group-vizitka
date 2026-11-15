@@ -1,0 +1,121 @@
+/* Path-based icons render consistently without platform emoji substitution. */
+.icon{display:inline-block;width:20px;height:20px;vertical-align:middle;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:square;stroke-linejoin:miter;flex-shrink:0}
+.icon-right{transform:rotate(45deg)}
+.icon-up{transform:rotate(-45deg)}
+.brand-icon{display:inline-flex;align-items:center;gap:1px}
+.brand-icon span{display:inline-flex;align-items:center}
+.brand-icon .icon{width:18px;height:18px;stroke-width:1.7}
+.button>span,.text-link>span,.summary-footnote>span{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
+.button .icon{width:21px;height:21px}
+.card-bottom a .icon{width:22px;height:22px}
+.ticker .icon-star{width:23px;height:23px;stroke-width:1.4}
+.summary-footnote .icon{width:25px;height:25px}
+.estimate-empty .icon{width:35px;height:35px}
+.menu{align-items:center;justify-content:center;min-width:38px;min-height:38px}
+footer>a:last-child{display:inline-flex;align-items:center;gap:7px}
+footer .icon{width:16px;height:16px}
+
+/* Lift the small copy while keeping the original display typography. */
+nav{font-size:13px}
+.hero-desc{font-size:15px}
+.button{font-size:13px}
+.text-link{font-size:13px}
+.hero-facts b{font-size:12px}
+.hero-facts small{font-size:11px;line-height:1.6}
+.section-heading>p,.calc-description{font-size:14px}
+.filters button{font-size:12px}
+.card p{font-size:13px;line-height:1.8}
+.card-price small{font-size:11px}
+.card-art .category{font-size:10px}
+.image-note{font-size:12px}
+.work-copy p{font-size:13px}
+.work-copy h3{font-size:16px}
+.contact-right p{font-size:14px}
+.photo-caption>span{font-size:10px}
+.photo-caption small{font-size:11px;line-height:1.6}
+.photo-tag{font-size:10px}
+footer{font-size:12px}
+.estimate-heading>p{font-size:14px}
+.add-equipment>label{font-size:13px}
+.add-equipment select{font-size:14px}
+.estimate-list-heading{font-size:11px}
+.line-index{font-size:10px;line-height:1.6}
+.estimate-equipment small{font-size:12px;line-height:1.6}
+.line-controls label{font-size:12px}
+.estimate-stepper input{font-size:15px}
+.line-sum span{font-size:11px}
+.estimate-summary .eyebrow{font-size:10px}
+.summary-machines{font-size:13px}
+.estimate-summary .total>span{font-size:12px}
+.estimate-summary .button{font-size:13px}
+.estimate-summary .calc-note{font-size:11px;line-height:1.8}
+.summary-footnote p{font-size:11px}
+#request-note{font-size:12px}
+.estimate-help{font-size:12px}
+.estimate-empty p{font-size:13px}
+.card-add{font-size:12px;min-height:42px;padding:11px}
+.card-bottom a{width:42px;height:42px}
+
+@media(max-width:1000px){
+ .hero-desc{font-size:14px}
+ .hero-facts{gap:18px}
+ .hero-facts span+span{padding-left:18px}
+ .estimate-heading>p{font-size:13px}
+ .estimate-equipment h3{font-size:17px}
+}
+@media(max-width:700px){
+ .menu{display:inline-flex}
+ .brand small{font-size:7px;letter-spacing:1.7px}
+ .header-phone{font-size:12px;white-space:nowrap}
+ .eyebrow{font-size:10px;letter-spacing:1.5px;line-height:1.7}
+ .hero-desc{font-size:15px;line-height:1.85}
+ .hero-desc br{display:none}
+ .hero-facts b{font-size:13px}
+ .hero-facts small{font-size:11px}
+ .hero-facts{gap:20px}
+ .hero-facts span+span{padding-left:20px}
+ .section-heading>p{font-size:14px}
+ .filters button{font-size:12px;padding:12px 13px;min-height:42px}
+ .ticker span{font-size:10px}
+ .ticker .icon-star{width:20px;height:20px}
+ .card p{font-size:14px}
+ .work-copy p{font-size:14px}
+ .image-note{font-size:12px;line-height:1.8}
+ .photo-caption small{font-size:11px}
+ .estimate-heading>p{font-size:14px;line-height:1.85}
+ .estimate-help{font-size:12px;line-height:1.8}
+ .estimate-stepper{height:44px}
+ .estimate-stepper button{min-width:36px}
+ .estimate-stepper input,.add-equipment select{font-size:16px}
+ .line-index{font-size:10px;letter-spacing:.5px}
+ .estimate-equipment small{font-size:12px}
+ .estimate-equipment h3{font-size:17px}
+ .line-controls label{font-size:12px}
+ .line-sum span{font-size:12px}
+ .estimate-summary .button{font-size:13px;min-height:56px}
+ .estimate-summary .calc-note,.summary-footnote p{font-size:12px}
+ .estimate-summary .eyebrow{font-size:11px}
+ .contact-right p{font-size:14px}
+ footer{font-size:11px}
+}
+@media(max-width:520px){
+ .hero-actions{display:grid;grid-template-columns:1fr;gap:12px}
+ .hero-actions>.button{width:100%;min-height:54px;font-size:14px}
+ .hero-actions>.text-link{justify-self:start;font-size:13px;gap:24px}
+ .hero-facts{gap:15px}
+ .hero-facts span+span{padding-left:15px}
+ .line-index{font-size:9px}
+ .estimate-equipment h3{font-size:16px}
+ .estimate-equipment small{font-size:11px}
+ .add-equipment .button{font-size:14px;min-height:48px}
+ .card-add{font-size:13px;min-height:44px}
+ .card-bottom a{width:44px;height:44px}
+ .remove-line{min-width:30px;min-height:30px}
+}
+@media(max-width:370px){
+ .brand{font-size:16px;gap:8px}
+ .brand-icon{font-size:21px;padding:5px 8px}
+ .brand small{font-size:6px;letter-spacing:1.2px}
+ .header-phone{font-size:11px}
+ .menu{min-width:34px;padding:6px}
+}
